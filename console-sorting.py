@@ -53,7 +53,7 @@ class Sorting:
 
     def quick_sort(self):
         n = len(self.array)
-        self.pivot = self.array[n // 2]  
+        self.pivot = self.array[0]  
 
         left = []
         right = []
@@ -64,18 +64,17 @@ class Sorting:
             else:
                 right.append(self.array[i])
 
-        for j in range(1, len(left) - 1):  
+        for j in range(0, len(left) - 1):  
             if left[j] > left[j+1]:
                 left[j], left[j+1] = left[j+1], left[j]
 
-        for k in range(1, len(right) - 1):
+        for k in range(0, len(right) - 1):
             if right[k] > right[k+1]:
                 right[k], right[k+1] = right[k+1], right[k]
 
         self.array.clear()
         self.array = left + [self.pivot] + right
         return self.array
-
 
     def heapify(self, n, i):
         largest = i
