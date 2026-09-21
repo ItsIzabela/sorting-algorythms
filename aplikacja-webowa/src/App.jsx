@@ -1,122 +1,77 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import { BubbleSort } from './assets/components/bubble_sort.js'
+import { HeapSort } from './assets/components/heap_sort.js'
+import { InsertionSort } from './assets/components/insertion_sort.js'
+import { QuickSort } from './assets/components/quick_sort.js'
+import { SelectionSort } from './assets/components/selection_sort.js'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [array, setArray] = useState([5, 3, 8, 4, 2])
+  const [sortedArray, setSortedArray] = useState([])
+
+  const [inputValue, setInputValue] = useState(array.join(' '))
+
+  const handleInputChange = (e) => {
+    const value = e.target.value
+    setInputValue(value)
+
+    const parsedArray = value
+      .trim()
+      .split(/\s+/)
+      .map(numStr => Number(numStr))
+      .filter(num => !isNaN(num))
+
+    setArray(parsedArray)
+    setSortedArray([])
+  }
+
+  const handleBubbleSort = () => {
+    const result = BubbleSort(array)
+    setSortedArray(result)
+  }
+
+  const handleHeapSort = () => {
+    const result = HeapSort(array)
+    setSortedArray(result)
+  }
+
+  const handleInsertionSort = () => {
+    const result = InsertionSort(array)
+    setSortedArray(result)
+  }
+
+  const handleQuicksort = () => {
+    const result = QuickSort(array)
+    setSortedArray(result)
+  }
+
+  const handleSelectionSort = () => {
+    const result = SelectionSort(array)
+    setSortedArray(result)
+  }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <h1>Algorytmy Sortowania</h1>
+      <input
+        type="text"
+        name="array"
+        id="array"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Wpisz liczby oddzielone spacją"
+      />  
+      <div id='buttons'>
+        <button onClick={handleBubbleSort}>Sortowanie bąbelkowe</button>
+        <button onClick={handleHeapSort}>Sortowanie heap</button>
+        <button onClick={handleInsertionSort}>Sortowanie poprzez wstawianie</button>
+        <button onClick={handleQuicksort}>Sortowanie szybkie</button>
+        <button onClick={handleSelectionSort}>Sortowanie poprzez wybieranie</button>
+      </div>
+      <div id='results'>
+        <p>Oryginalna tablica: {array.join(', ')}</p>
+        <p>Posortowana tablica: {sortedArray.join(', ')}</p>
+      </div>
     </>
   )
 }
-
-export default App
