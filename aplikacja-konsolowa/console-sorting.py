@@ -5,11 +5,7 @@ class Sorting:
         self.user_input = user_input
         self.array = array
         self.input_list = []
-        self.min = 0 # selection sort
         self.pivot = 0 # quick sort
-        self.largest = 0 # heap sort
-        self.l = 0
-        self.r = 0
 
     def choose_array(self):
         print(Fore.GREEN + "---")
@@ -53,7 +49,7 @@ class Sorting:
 
     def quick_sort(self):
         n = len(self.array)
-        self.pivot = self.array[0]  
+        self.pivot = self.array[0]  # pivotem jest 1 liczba tablicy
 
         left = []
         right = []
