@@ -261,11 +261,6 @@ fun AppContent(modifier: Modifier = Modifier) {
             Text("Sortowanie heap")
         }
 
-
-
-
-
-
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
