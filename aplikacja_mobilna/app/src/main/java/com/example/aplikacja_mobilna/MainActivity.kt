@@ -1,12 +1,9 @@
 package com.example.aplikacja_mobilna
 
-import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,31 +15,21 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.aplikacja_mobilna.ui.theme.Aplikacja_mobilnaTheme
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import androidx.compose.foundation.layout.Row
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -142,16 +129,16 @@ fun AppContent(modifier: Modifier = Modifier) {
                 arrayList = parseInputToMutableList(arrayInput)
                 val n = arrayList.size
                 for (i in 0 until n - 1) {
-                    var min_index = i
+                    var minIndex = i
                     for (j in i + 1 until n) {
-                        if (arrayList[j] < arrayList[min_index]) {
-                            min_index = j
+                        if (arrayList[j] < arrayList[minIndex]) {
+                            minIndex = j
                         }
                     }
-                    if (min_index != i) {
+                    if (minIndex != i) {
                         val temp = arrayList[i]
-                        arrayList[i] = arrayList[min_index]
-                        arrayList[min_index] = temp
+                        arrayList[i] = arrayList[minIndex]
+                        arrayList[minIndex] = temp
                     }
                 }
             }
