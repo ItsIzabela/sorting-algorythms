@@ -22,6 +22,7 @@
   - [3.2 Aplikacja desktopowa](#32-aplikacja-desktopowa)
   - [3.3 Aplikacja webowa](#33-aplikacja-webowa)
   - [3.4 Aplikacja mobilna](#34-aplikacja-mobilna)
+  - [4. Testy](#4-testy)
 
 
 ## 1. Opis działania aplikakcji
@@ -77,4 +78,18 @@ na końcu kliknąć w link trzymając w tym samym czasie ctrl do localhost lub s
 ## 3.4 Aplikacja mobilna
 
 Aby uruchomić aplikację konsolową należy wejść w Android Studio, otworzyć emulator, odnaleść plik MainActivity.kt oraz po właczeniu emulatora właczyć aplikacje.
+
+## 4. Testy
+
+Testy zostały wykonane do aplikacji konsolowej
+
+Aby uruchomic test nalezy otworzyc terminal i wpisac nastepnujace polecenia:
+
+```bash
+cd aplikacja_konsolowa
+python -m pip install pytest
+python -m pytest console_sorting_test.py
+```
+
+Testy obejmują sprawdzenie każdego sortowania, wpisywania liczb do inputu oraz wybieranie metody którą chcemy posortować naszą wybrana tablice.
 
